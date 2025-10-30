@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salgaonkar Arts – Handcrafted Divine Idols</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ==== Global Reset & Base Styles ==== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0F0A2E;
+            color: #E0E7FF;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        section {
+            padding: 5rem 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.9s ease, transform 0.9s ease;
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==== Typography ==== */
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: #D4A017;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: 3.8rem;
+            line-height: 1.1;
+            text-shadow: 0 4px 15px rgba(212, 160, 23, 0.3);
+        }
+        h2 {
+            font-size: 2.6rem;
+            text-align: center;
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        h2::after {
+            content: '';
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #D4A017, transparent);
+            display: block;
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+            color: #C0D1FF;
+        }
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.2rem;
+            background: #D4A017;
+            color: #0A1D56;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            box-shadow: 0 6px 20px rgba(212, 160, 23, 0.4);
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            border: 2px solid #D4A017;
+        }
+        .btn:hover {
+            background: transparent;
+            color: #D4A017;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(212, 160, 23, 0.6);
+        }
+
+        /* ==== Color Palette ==== */
+        :root {
+            --primary: #0A1D56;
+            --accent: #D4A017;
+            --bg-dark: #0F0A2E;
+            --bg-navy: #1A1F3D;
+            --bg-soft: #2A2F5B;
+            --text-light: #E0E7FF;
+            --text-muted: #C0D1FF;
+        }
+
+        /* ==== REAL SVG MANDALA ==== */
+        .mandala-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 800px;
+            height: 800px;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 0;
+            overflow: visible;
+            opacity: 0.18;
+            animation: slowRotate 60s linear infinite;
+        }
+        .mandala-svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 30px rgba(212, 160, 23, 0.4));
+            animation: gentlePulse 8s ease-in-out infinite alternate;
+        }
+        @keyframes slowRotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        @keyframes gentlePulse {
+            0% { filter: drop-shadow(0 0 30px rgba(212, 160, 23, 0.4)) blur(1px); }
+            100% { filter: drop-shadow(0 0 50px rgba(212, 160, 23, 0.6)) blur(2px); }
+        }
+
+        /* ==== Hero Section ==== */
+        #hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(15, 10, 46, 0.92), rgba(15, 10, 46, 0.95)), 
+                        url('https://shrooooyes.github.io/Salgaonkar-Arts/assets/hero-bg.jpg') center/cover no-repeat;
+            overflow: hidden;
+            z-index: 1;
+        }
+        #hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://shrooooyes.github.io/Salgaonkar-Arts/assets/mandala-transparent.png') center/contain no-repeat;
+            opacity: 0.08;
+            z-index: -1;
+        }
+        .hero-content {
+            max-width: 900px;
+            padding: 2rem;
+            z-index: 2;
+        }
+
+        /* ==== About Section ==== */
+        #about { background: var(--bg-navy); }
+        .about-grid {
+            display: flex;
+            gap: 3.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        .about-img img {s
+	    width: fit-content;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            border: 3px solid rgba(212,160,23,0.2);
+        }
+
+        /* ==== Gallery Section ==== */
+        #gallery {
+            background: var(--bg-dark);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 2.2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .card {
+            background: var(--bg-navy);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: all 0.5s ease;
+            border: 1px solid rgba(212,160,23,0.15);
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 50px rgba(212,160,23,0.3);
+            border: 1px solid rgba(212,160,23,0.5);
+        }
+        .card img {
+            transition: transform 0.5s ease;
+        }
+        .card:hover img {
+            transform: scale(1.07);
+        }
+        .card-body {
+            padding: 1.8rem;
+            text-align: center;
+        }
+        .card-title {
+            font-size: 1.45rem;
+            color: #D4A017;
+            margin-bottom: 0.6rem;
+        }
+        .card-text {
+            color: #B0C4FF;
+            font-size: 0.98rem;
+            margin-bottom: 1.2rem;
+        }
+        .enquire {
+            background: #D4A017;
+            color: #0A1D56;
+            padding: 0.7rem 1.4rem;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            border: 2px solid #D4A017;
+        }
+        .enquire:hover {
+            background: transparent;
+            color: #D4A017;
+        }
+
+        /* ==== Media & Videos Section ==== */
+        #media {
+            background: var(--bg-soft);
+            position: relative;
+        }
+        #media::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('https://shrooooyes.github.io/Salgaonkar-Arts/assets/mandala-transparent.png') center center/40% no-repeat;
+            opacity: 0.06;
+            pointer-events: none;
+        }
+        .media-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .video-card {
+            background: rgba(255,255,255,0.08);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(212,160,23,0.2);
+        }
+        .video-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(212,160,23,0.25);
+        }
+        .video-thumb {
+            position: relative;
+            overflow: hidden;
+        }
+        .video-thumb img {
+            transition: transform 0.4s ease;
+        }
+        .video-card:hover .video-thumb img {
+            transform: scale(1.05);
+        }
+        .play-button {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 70px; height: 70px;
+            background: rgba(212,160,23,0.9);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #0A1D56;
+            box-shadow: 0 0 20px rgba(212,160,23,0.6);
+            transition: all 0.3s ease;
+        }
+        .video-card:hover .play-button {
+            background: #fff;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        .video-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .video-title {
+            font-size: 1.3rem;
+            color: #D4A017;
+            margin-bottom: 0.5rem;
+        }
+        .video-desc {
+            color: #B0C4FF;
+            font-size: 0.95rem;
+        }
+
+        /* ==== Process, Testimonials, Contact, Footer ==== */
+        #process { background: var(--bg-soft); }
+        .process-steps {
+            display: flex;
+            overflow-x: auto;
+            gap: 2.2rem;
+            padding: 1.5rem 0;
+            scrollbar-width: none;
+        }
+        .process-steps::-webkit-scrollbar { display: none; }
+        .step {
+            min-width: 260px;
+            background: rgba(255,255,255,0.08);
+            padding: 2rem 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(212,160,23,0.2);
+        }
+        .step-icon {
+            width: 80px; height: 80px;
+            background: #D4A017;
+            border-radius: 50%;
+            margin: 0 auto 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #0A1D56;
+            font-weight: bold;
+            box-shadow: 0 0 20px rgba(212,160,23,0.5);
+        }
+
+        #testimonials { background: var(--bg-navy); }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .testimonial-card {
+            background: var(--bg-dark);
+            padding: 2.2rem;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+            border-left: 6px solid #D4A017;
+        }
+        .testimonial-card::before {
+            content: '“';
+            font-size: 6rem;
+            color: #D4A017;
+            opacity: 0.15;
+            position: absolute;
+            top: -15px;
+            left: 18px;
+            font-family: 'Playfair Display', serif;
+        }
+        .quote { font-style: italic; margin-bottom: 1.2rem; color: #C0D1FF; font-size: 1.05rem; }
+        .author { font-weight: 600; color: #D4A017; text-align: right; font-size: 0.95rem; }
+
+        #contact {
+            background: var(--primary);
+            position: relative;
+        }
+        .contact-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        .contact-form input, .contact-form textarea {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(212,160,23,0.2);
+            color: #E0E7FF;
+            padding: 1rem;
+            border-radius: 8px;
+            width: 100%;
+            margin-bottom: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: #D4A017;
+            box-shadow: 0 0 15px rgba(212,160,23,0.3);
+            outline: none;
+        }
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+        }
+        .social-links a {
+            width: 48px; height: 48px;
+            background: #D4A017;
+            color: #0A1D56;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(212,160,23,0.4);
+            transition: all 0.3s ease;
+        }
+        .social-links a:hover {
+            background: #0A1D56;
+            color: #D4A017;
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(212,160,23,0.5);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            background: #08061A;
+            color: #8899CC;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(212,160,23,0.2);
+        }
+
+        /* ==== Responsive ==== */
+        @media (max-width: 992px) {
+            .about-grid, .contact-container { grid-template-columns: 1fr; }
+            h1 { font-size: 3rem; }
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.6rem; }
+            section { padding: 4rem 1.5rem; }
+            .mandala-container { width: 600px; height: 600px; }
+            .social-links { justify-content: flex-start; }
+        }
+        @media (max-width: 576px) {
+            .gallery-grid, .video-grid { grid-template-columns: 1fr; }
+            .mandala-container { width: 450px; height: 450px; }
+            .social-links a { width: 44px; height: 44px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO WITH REAL SVG MANDALA -->
+    <section id="hero">
+        <div class="mandala-container">
+            <svg class="mandala-svg" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="8" result="blur"/>
+                        <feFlood flood-color="#D4A017" flood-opacity="0.6"/>
+                        <feComposite in2="blur" operator="in"/>
+                        <feMerge>
+                            <feMergeNode/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                    <linearGradient id="gold-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#FFD700"/>
+                        <stop offset="50%" stop-color="#D4A017"/>
+                        <stop offset="100%" stop-color="#B8860B"/>
+                    </linearGradient>
+                </defs>
+
+                <!-- Center Lotus -->
+                <g transform="translate(400,400)">
+                    <circle r="40" fill="url(#gold-gradient)" filter="url(#glow)"/>
+                    <circle r="25" fill="#0A1D56"/>
+                    <circle r="15" fill="#D4A017"/>
+                </g>
+
+                <!-- 8 Petals -->
+                <g transform="translate(400,400)">
+                    <path d="M0,-120 Q50,-80 60,-30 T0,0 T-60,-30 Q-50,-80 0,-120" fill="url(#gold-gradient)" opacity="0.9" filter="url(#glow)"/>
+                </g>
+                <g transform="translate(400,400) rotate(45)">
+                    <path d="M0,-120 Q50,-80 60,-30 T0,0 T-60,-30 Q-50,-80 0,-120" fill="url(#gold-gradient)" opacity="0.8"/>
+                </g>
+                <g transform="translate(400,400) rotate(90)">
+                    <path d="M0,-120 Q50,-80 60,-30 T0,0 T-60,-30 Q-50,-80 0,-120" fill="url(#gold-gradient)" opacity="0.7"/>
+                </g>
+                <g transform="translate(400,400) rotate(135)">
+                    <path d="M0,-120 Q50,-80 60,-30 T0,0 T-60,-30 Q-50,-80 0,-120" fill="url(#gold-gradient)" opacity="0.6"/>
+                </g>
+                <g transform="translate(400,400) rotate(180)">
+                    <path d="M0,-120 Q50,-80 60,-30 T0,0 T-60,-30 Q-50,-80 0,-120" fill="url(#gold-gradient)" opacity="0.7"/>
+                </g>
+                <g transform="translate(400,400) rotate(225)">
+                    <path d="M0,-120 Q50,-80 60,-30 T0,0 T-60,-30 Q-50,-80 0,-120" fill="url(#gold-gradient)" opacity="0.8"/>
+                </g>
+                <g transform="translate(400,400) rotate(270)">
+                    <path d="M0,-120 Q50,-80 60,-30 T0,0 T-60,-30 Q-50,-80 0,-120" fill="url(#gold-gradient)" opacity="0.9"/>
+                </g>
+                <g transform="translate(400,400) rotate(315)">
+                    <path d="M0,-120 Q50,-80 60,-30 T0,0 T-60,-30 Q-50,-80 0,-120" fill="url(#gold-gradient)" opacity="0.6"/>
+                </g>
+
+                <!-- Outer Rings -->
+                <circle cx="400" cy="400" r="280" fill="none" stroke="#D4A017" stroke-width="1.5" opacity="0.4"/>
+                <circle cx="400" cy="400" r="320" fill="none" stroke="#4169E1" stroke-width="1" opacity="0.3"/>
+                <circle cx="400" cy="400" r="360" fill="none" stroke="#D4A017" stroke-width="2" opacity="0.25" filter="url(#glow)"/>
+
+                <!-- Sacred Geometry -->
+                <g fill="#D4A017" opacity="0.3">
+                    <path d="M400,100 L360,180 L440,180 Z" filter="url(#glow)"/>
+                    <path d="M400,700 L360,620 L440,620 Z" filter="url(#glow)"/>
+                    <path d="M100,400 L180,360 L180,440 Z" filter="url(#glow)"/>
+                    <path d="M700,400 L620,360 L620,440 Z" filter="url(#glow)"/>
+                </g>
+
+                <!-- Tiny Dots -->
+                <g fill="#87CEEB" opacity="0.5">
+                    <circle cx="400" cy="150" r="4"/>
+                    <circle cx="400" cy="650" r="4"/>
+                    <circle cx="150" cy="400" r="4"/>
+                    <circle cx="650" cy="400" r="4"/>
+                </g>
+            </svg>
+        </div>
+
+        <div class="hero-content">
+            <h1>Salgaonkar Arts</h1>
+            <p>Handcrafted Divine Idols, Made with Love and Devotion</p>
+            <a href="#gallery" class="btn">Explore Our Creations</a>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="visible">
+        <h2>About Us</h2>
+        <div class="about-grid">
+            <div class="about-img">
+                <img src="C:\Users\Admin\Downloads\hero.jpeg" alt="Hero">
+            </div>
+            <div class="about-text">
+                <p>At <strong>Salgaonkar Arts</strong>, we carry forward a proud family tradition of idol-making, blending artistry with devotion. Each piece is lovingly sculpted and painted by hand, capturing divine beauty in every detail.</p>
+                <p>From traditional Ganesh and Krishna idols to Naag Panchami snake idols and custom thermocol makars, our pieces are designed to bring grace to your celebration while caring for nature.</p>
+                <p><strong>Eco-friendly materials • Handcrafted with love • Bulk & custom orders welcome</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery">
+        <h2>Our Creations</h2>
+        <div class="gallery-grid">
+
+            <!-- GANESH -->
+            <div class="card" onclick="document.getElementById('media').scrollIntoView({behavior: 'smooth'})">
+                <img src="C:\Users\Admin\Downloads\514122977_17850408081493725_6651465388423201694_n.webp" alt="Selfie Ganesh">
+                <div class="card-body">
+                    <h3 class="card-title">Lord Ganesh (Selfie)</h3>
+                    <p class="card-text">Modern fun Ganesh with phone.</p>
+                    <a href="tel:+919822987048" class="enquire">Enquire Now</a>
+                </div>
+            </div>
+            <div class="card" onclick="document.getElementById('media').scrollIntoView({behavior: 'smooth'})">
+                <img src="C:\Users\Admin\Downloads\Ganesh on deer.jpg" alt="Ganesh on Deer">
+                <div class="card-body">
+                    <h3 class="card-title">Lord Ganesh on Deer</h3>
+                    <p class="card-text">Eco-friendly clay, hand-painted.</p>
+                    <a href="tel:+919822987048" class="enquire">Enquire Now</a>
+                </div>
+            </div>
+
+            <!-- KRISHNA -->
+            <div class="card" onclick="document.getElementById('media').scrollIntoView({behavior: 'smooth'})">
+                <img src="C:\Users\Admin\Downloads\WhatsApp Image 2025-10-29 at 10.18.46 PM.jpeg" alt="Krishna with Cow">
+                <div class="card-body">
+                    <h3 class="card-title">Krishna</h3>
+                    <p class="card-text">Baby Krishna</p>
+                    <a href="tel:+919822987048" class="enquire">Enquire Now</a>
+                </div>
+            </div>
+
+            <!-- NAAG -->
+            <div class="card" onclick="document.getElementById('media').scrollIntoView({behavior: 'smooth'})">
+                <img src="C:\Users\Admin\Downloads\WhatsApp Image 2025-10-29 at 10.19.44 PM.jpeg" alt="Single Naag">
+                <div class="card-body">
+                    <h3 class="card-title">Naag Devta (Single)</h3>
+                    <p class="card-text">Vibrant hand-painted cobra idol.</p>
+                    <a href="tel:+919822987048" class="enquire">Enquire Now</a>
+                </div>
+            </div>
+            <div class="card" onclick="document.getElementById('media').scrollIntoView({behavior: 'smooth'})">
+                <img src="C:\Users\Admin\Downloads\WhatsApp Image 2025-10-29 at 10.19.46 PM.jpeg" alt="Naag Set">
+                <div class="card-body">
+                    <h3 class="card-title">Naag Devta Set</h3>
+                    <p class="card-text">Bulk colorful snake idols.</p>
+                    <a href="tel:+919822987048" class="enquire">Enquire Now</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Media & Videos -->
+    <section id="media">
+        <h2>Featured on YouTube</h2>
+        <div class="media-container">
+            <p style="text-align:center; max-width:800px; margin:0 auto 2rem; color:#B0C4FF;">
+                Watch our artisans in action and see the love behind every idol.
+            </p>
+            <div class="video-grid">
+                <a href="https://youtu.be/HQ44dIsDQxU" target="_blank" class="video-card">
+                    <div class="video-thumb">
+                        <img src="https://img.youtube.com/vi/HQ44dIsDQxU/maxresdefault.jpg" alt="Eco-Friendly Ganesh">
+                        <div class="play-button">Play</div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Eco-Friendly Ganesh Idol Making</h3>
+                        <p class="video-desc">Step-by-step clay idol crafting process.</p>
+                    </div>
+                </a>
+		<a href="https://youtu.be/kXSbkiGRbps" target="_blank" class="video-card">
+                    <div class="video-thumb">
+                        <img src="C:\Users\Admin\Downloads\kXSbkiGRbps-SD.jpg" alt="Eco-Friendly Ganesh">
+                        <div class="play-button">Play</div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Artisans at Work – Salgaonkar Arts</h3>
+                        <p class="video-desc">A day in our family workshop in Goa.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process">
+        <h2>The Art of Creation</h2>
+        <div class="process-steps">
+            <div class="step"><div class="step-icon">1</div><h3>Selecting Clay</h3><p>Pure, eco-friendly clay sourced locally.</p></div>
+            <div class="step"><div class="step-icon">2</div><h3>Sculpting</h3><p>Skilled hands shape divine forms.</p></div>
+            <div class="step"><div class="step-icon">3</div><h3>Drying & Painting</h3><p>Natural drying with non-toxic colors.</p></div>
+            <div class="step"><div class="step-icon">4</div><h3>Detailing</h3><p>Intricate ornaments bring idols to life.</p></div>
+            <div class="step"><div class="step-icon">5</div><h3>Blessing & Finishing</h3><p>Final prayers and packaging.</p></div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials">
+        <h2>What Our Devotees Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card"><p class="quote">“The Ganesh idol brought so much positivity to our home. The detailing is divine!”</p><p class="author">— R. Kulkarni, Panjim</p></div>
+            <div class="testimonial-card"><p class="quote">“Eco-friendly and beautifully crafted. Our Janmashtami was truly special.”</p><p class="author">— S. Naik, Mapusa</p></div>
+            <div class="testimonial-card"><p class="quote">“The Naag idol was perfect. Thank you for the care.”</p><p class="author">— P. Desai, Verem</p></div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-container">
+            <div class="contact-form">
+                <form>
+                    <div class="form-group"><label for="name">Name</label><input type="text" id="name" placeholder="Your Name" required></div>
+                    <div class="form-group"><label for="email">Email</label><input type="email" id="email" placeholder="your@email.com" required></div>
+                    <div class="form-group"><label for="message">Message</label><textarea id="message" placeholder="Tell us about your idol needs..." required></textarea></div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <p>Phone: <a href="tel:+919822987048">+91 98229 87048</a></p>
+                <p>Phone: <a href="tel:+917796687048">+91 77966 87048</a></p>
+                <p>Email: <a href="salgaonkarsidhanth200303@gmail.com">salgaonkarsidhanth200303@gmail.com</a></p>
+                <p>Location: Near Bamboo Motels, Sonar Bhat, Verem, Bardez, Goa</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/salgaonkar_arts" target="_blank" aria-label="Instagram">IG</a>
+                    <a href="#" target="_blank" aria-label="Facebook">FB</a>
+                    <a href="https://wa.me/919822987048" target="_blank" aria-label="WhatsApp">WA</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Salgaonkar Arts — Handmade with Love & Devotion</p>
+    </footer>
+
+    <!-- Fade-in on Load -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll('section').forEach((sec, i) => {
+                setTimeout(() => sec.classList.add('visible'), i * 250);
+            });
+        });
+    </script>
+</body>
+</html>
